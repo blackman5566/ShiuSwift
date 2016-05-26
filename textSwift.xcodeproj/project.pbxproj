@@ -12,6 +12,8 @@
 		2E3BA4741CBF9DFC001FBDF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E3BA4721CBF9DFC001FBDF8 /* Main.storyboard */; };
 		2E3BA4761CBF9DFC001FBDF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E3BA4751CBF9DFC001FBDF8 /* Assets.xcassets */; };
 		2E3BA4791CBF9DFC001FBDF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E3BA4771CBF9DFC001FBDF8 /* LaunchScreen.storyboard */; };
+		2E96CBED1CF6A53200F8AE6A /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E96CBEB1CF6A53200F8AE6A /* TableViewCell.swift */; };
+		2E96CBEE1CF6A53200F8AE6A /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E96CBEC1CF6A53200F8AE6A /* TableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,9 @@
 		2E3BA4751CBF9DFC001FBDF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E3BA4781CBF9DFC001FBDF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E3BA47A1CBF9DFC001FBDF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E96CBE51CF6A4EA00F8AE6A /* textSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "textSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		2E96CBEB1CF6A53200F8AE6A /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		2E96CBEC1CF6A53200F8AE6A /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +61,13 @@
 			children = (
 				2E3BA46E1CBF9DFC001FBDF8 /* AppDelegate.swift */,
 				2E3BA4701CBF9DFC001FBDF8 /* ViewController.swift */,
+				2E96CBEB1CF6A53200F8AE6A /* TableViewCell.swift */,
+				2E96CBEC1CF6A53200F8AE6A /* TableViewCell.xib */,
 				2E3BA4721CBF9DFC001FBDF8 /* Main.storyboard */,
 				2E3BA4751CBF9DFC001FBDF8 /* Assets.xcassets */,
 				2E3BA4771CBF9DFC001FBDF8 /* LaunchScreen.storyboard */,
 				2E3BA47A1CBF9DFC001FBDF8 /* Info.plist */,
+				2E96CBE51CF6A4EA00F8AE6A /* textSwift-Bridging-Header.h */,
 			);
 			path = textSwift;
 			sourceTree = "<group>";
@@ -123,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E3BA4791CBF9DFC001FBDF8 /* LaunchScreen.storyboard in Resources */,
+				2E96CBEE1CF6A53200F8AE6A /* TableViewCell.xib in Resources */,
 				2E3BA4761CBF9DFC001FBDF8 /* Assets.xcassets in Resources */,
 				2E3BA4741CBF9DFC001FBDF8 /* Main.storyboard in Resources */,
 			);
@@ -135,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E96CBED1CF6A53200F8AE6A /* TableViewCell.swift in Sources */,
 				2E3BA4711CBF9DFC001FBDF8 /* ViewController.swift in Sources */,
 				2E3BA46F1CBF9DFC001FBDF8 /* AppDelegate.swift in Sources */,
 			);
@@ -249,10 +259,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = textSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ufiSpace.textSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "textSwift/textSwift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -260,10 +273,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = textSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ufiSpace.textSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "textSwift/textSwift-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -286,6 +301,7 @@
 				2E3BA47F1CBF9DFC001FBDF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
