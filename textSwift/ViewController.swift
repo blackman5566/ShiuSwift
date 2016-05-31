@@ -49,8 +49,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func buttonAction(sender: AnyObject) {
         ShowJson()
         ShowView()
+        ShowClosure()
     }
-    
     
     /**
      @abstract 定義傳送的格式
@@ -59,7 +59,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
      */
     func ShowJson(){
         let str = "{\"name\":\"James\",\"address\":{\"country\":\"Taiwan\"}}"
-        let result = convertStringToDictionary(str) // ["name": "James"]
+        let result = ConvertStringToDictionary(str) // ["name": "James"]
         ConditionalExpressionDescription(result!)
         print(result!)
     }
@@ -85,7 +85,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func ShowView()  {
         let view = testView().initNib() as! testView
         view.frame = CGRectMake(0, 0, 100, 200);
-        view.test.text = "dwqdqwdqw"
+        view.test.text = "測試測試"
+        
+        view.closureBlock = {
+            print("hello world")
+        }
         self.view.addSubview(view)
     }
     
@@ -94,7 +98,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
      @discussion 將收到的字串轉換成Dictionary
      @returns String to Dictionary
      */
-    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+    func ConvertStringToDictionary(text: String) -> [String:AnyObject]? {
         if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
             do {
                 return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
@@ -104,6 +108,45 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         return nil
     }
+    
+    /**
+     @abstract Swift Closure (Block) 實作
+     @discussion 練習將 Closure 實作出來
+     @returns
+     */
+    
+    func ShowClosure(){
+        repeatMessage(1){
+            print("hello world")
+        }
+        repeatMessage2(3){
+            return "第\($0)次說\($1)"
+        }
+    }
+    
+    /**
+     @abstract Swift Closure (Block) 實作
+     @discussion 練習將 Closure 實作出來
+     @returns 將 Closure 當作參數實現
+     */
+    func repeatMessage(count: Int, action: ()->()) {
+        for _ in 1...count {
+            action()
+        }
+    }
+    
+    /**
+     @abstract Swift Closure (Block) 實作
+     @discussion 練習將 Closure 實作出來
+     @returns 將 Closure 當作參數實現2
+     */
+    func repeatMessage2(count: Int, action: (Int, String) -> String) {
+        for i in 1...count {
+            action(i, "hello")
+        }
+    }
+    
+    //https://hugolu.gitbooks.io/learn-swift/content/Basic/Closure.html
 }
 
 

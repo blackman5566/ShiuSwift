@@ -9,7 +9,9 @@
 import UIKit
 
 class testView: BaseView {
- @IBOutlet weak var test: UILabel!
+    @IBOutlet weak var test: UILabel!
+    var closureBlock:(()->())?
+    
     override init() {
         super.init()
     }
@@ -17,4 +19,10 @@ class testView: BaseView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    @IBAction func buttonAction(sender: AnyObject) {
+        if closureBlock != nil {
+         self.closureBlock!()
+        }
+    }
+    
 }

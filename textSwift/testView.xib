@@ -17,6 +17,13 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCM-pg-cxL">
+                    <rect key="frame" x="21" y="58" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="buttonAction:" destination="iN0-l3-epB" eventType="touchDown" id="DKV-kS-Vfy"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.40000000000000002" green="0.70766044459999999" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
