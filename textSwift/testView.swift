@@ -7,9 +7,16 @@
 //
 
 import UIKit
+// MARK: Init View Protocol
+protocol takoButtonProtocol {
+    func didTapButton (Message:String)
+    func labelTextOnTakoButton () -> String
+}
 
 class testView: BaseView {
     @IBOutlet weak var test: UILabel!
+    var delegate:takoButtonProtocol?
+    
     var closureBlock:(()->())?
     
     override init() {
@@ -19,9 +26,13 @@ class testView: BaseView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
     @IBAction func buttonAction(sender: AnyObject) {
         if closureBlock != nil {
-         self.closureBlock!()
+        self.closureBlock!()
+        // delegate action 
+        self.delegate!.didTapButton("delegate 設定")
+        self.test.text = self.delegate!.labelTextOnTakoButton()
         }
     }
     

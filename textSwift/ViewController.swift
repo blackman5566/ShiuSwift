@@ -9,12 +9,12 @@
 import UIKit
 
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, takoButtonProtocol  {
     @IBOutlet weak var textTableView: UITableView!
-    // 你可以在同一行定義定義多個相同行別的變數，並用逗號隔開，最後加上型別標注。
+    @IBOutlet weak var label: UILabel!
+    
     var ListArray: Array = ["Hello world", "Swift", "UITableView", "媽!我在這裡"]
     var red = 0, green = 0, blue: Double = 0.0
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +22,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         textTableView.registerNib(nib, forCellReuseIdentifier: "TableViewCell")
         textTableView.rowHeight = UITableViewAutomaticDimension
         textTableView.estimatedRowHeight = 60
-        
-        numberFromString()
-        
     }
+    
     func tableView(tableView : UITableView, cellForRowAtIndexPath indexPath : NSIndexPath)->UITableViewCell {
         
         let simpleTableIdentifier = "TableViewCell";
@@ -36,14 +34,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView : UITableView, numberOfRowsInSection section : Int)->Int {
         return ListArray.count
-    }
-    
-    func numberFromString() {
-        let stringNumber = "1234"
-        let numberFromString = Int(stringNumber)
-        if numberFromString != nil {
-            print("convertedNumber has an integer value of \(numberFromString!).")
-        }
     }
     
     @IBAction func buttonAction(sender: AnyObject) {
@@ -86,7 +76,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let view = testView().initNib() as! testView
         view.frame = CGRectMake(0, 0, 100, 200);
         view.test.text = "測試測試"
-        
+        view.delegate = self
         view.closureBlock = {
             print("hello world")
         }
@@ -147,6 +137,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     //https://hugolu.gitbooks.io/learn-swift/content/Basic/Closure.html
+    
+    /**
+     @abstract Swift delegate 實作
+     @discussion 練習將 delegate 實作出來
+     @returns 實現兩個協定
+     */
+    func didTapButton (Message:String){
+        self.label.text = Message;
+    }
+    
+    func labelTextOnTakoButton () -> String{
+        return "你好"
+    }
 }
 
 
