@@ -22,8 +22,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         textTableView.registerNib(nib, forCellReuseIdentifier: "TableViewCell")
         textTableView.rowHeight = UITableViewAutomaticDimension
         textTableView.estimatedRowHeight = 60
-        ListArray.append("新來的")
-        ListArray.insert("我是第一個", atIndex: 0)
+        
         numberFromString()
         
     }
@@ -32,8 +31,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let simpleTableIdentifier = "TableViewCell";
         let cell = tableView.dequeueReusableCellWithIdentifier(simpleTableIdentifier, forIndexPath: indexPath) as! TableViewCell
         cell.testLabel.text = "\(ListArray[indexPath.row])";
-        //        print("\(ListArray.objectAtIndex(indexPath.row))")
-        //        print("The current value of friendlyWelcome is \(cell.testLabel.text)")
         return cell
     }
     
@@ -41,78 +38,62 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return ListArray.count
     }
     
-    /*
-     @abstract 使用optionals來處理值可能不存在的情況。optionals 型別表示：有值，等於 x  或者 沒有值
-     @discussion 因為toInt方法可能會失敗，所以它回傳一個optional Int，而不是一個Int。一個 optional Int被寫作Int?而不是Int。問號暗示包
-     含的值是 optional 型別，也就是說可能包含Int值也可能不包含值。（不能包含其他任何值比如Bool值或者String值。只能是Int或者什麼都沒有。）
-     @param completion callback 有值回傳 Optional(1234), 沒有值回傳 nil
-     */
     func numberFromString() {
         let stringNumber = "1234"
         let numberFromString = Int(stringNumber)
-        
-        /*
-         @abstract 可以使用if語句透過對比nil的方式來判斷一個 optional 是否包含值。使用「等於」運算子（==）或是「不等於」運算子(!=)來執行      
-         這樣的比較
-         @discussion 當你確定 optional 確實包含值之後，你可以在 optional 的名字後面加一個感嘆號（!）來獲取值。這個驚嘆號表示「我知道這個 
-         optional 有值，請使用它。」這被稱為 optional 值的強制解析（forced unwrapping）
-         @param completion callback numberFromString! = 1234
-         */
         if numberFromString != nil {
             print("convertedNumber has an integer value of \(numberFromString!).")
         }
-        
-        
-        
     }
+    
     @IBAction func buttonAction(sender: AnyObject) {
-        //let possibleString: String? = "我是一"
-        // ?? (Nil Coalescing Operator) 這個語法來簡化 Unwrapping 的過程。 他的規則是，如果 ?? 左邊有值，就取左邊原本的值，如果左邊是一個 nil ，那就改取右邊的值。
-        //        let possible = possibleString ?? "qwdqwd"
-        //        print(possible)
-        
-        //let assumedString: String! = "An implicitly unwrapped optional string."
-        //print(assumedString)  // 不需要感嘆號
-        // 輸出 "An implicitly unwrapped optional string."
-        
-        
-        
-        
-        
-        
-        let str = "{\"name\":\"James\",\"address\":{\"country\":\"Taiwan\"}}"
-                let result = convertStringToDictionary(str) // ["name": "James"]
-        //        if let name = result?["address"]?["country"]!  {
-        //            print(name) // "James"
-        //        }
-        //        let name1 = result?["address"]?["city"]! ?? "我是誰"
-        //        print(name1!)
-        
-        for index in 1...50 {
-            print("\(index) * 5 = \(index * 5)")
-        }
-        
-        for i in 0..<ListArray.count {
-            print("第 \(i + 1) 個人叫 \(ListArray[i])")
-        }
-        
-        for (airportCode, airportName) in result! {
-            print("\(airportCode): \(airportName)")
-        }
-        // 1 * 5 = 5
-        // 2 * 5 = 10
-        // 3 * 5 = 15
-        // 4 * 5 = 20
-        // 5 * 5 = 25
-        
-        //        let dog: String = "1111"
-        //        let cow: String = "wqddwq"
-        //        let dogCow = dog + cow
-        //        print("\(dogCow)")
-        // dogCow 現在是 "🐶🐮"
+        ShowJson()
+        ShowView()
     }
     
     
+    /**
+     @abstract 定義傳送的格式
+     @discussion 無
+     @returns 無
+     */
+    func ShowJson(){
+        let str = "{\"name\":\"James\",\"address\":{\"country\":\"Taiwan\"}}"
+        let result = convertStringToDictionary(str) // ["name": "James"]
+        ConditionalExpressionDescription(result!)
+        print(result!)
+    }
+    
+    /**
+     @abstract 使用？與！來做條件式處理
+     @discussion 1.用 if 判斷 country 是否有值，如果有值才會往下走 2.使用 ？？來做判斷，比如說 result["address"]?!["city"]! 如果為nil 則會回傳 “我是誰” 字串。
+     @returns 無
+     */
+    func ConditionalExpressionDescription(result:AnyObject) {
+        if let name = result["address"]?!["country"]  {
+            print(name!) // "James"
+        }
+        let message = result["address"]?!["city"]! ?? "我是誰"
+        print(message)
+    }
+    
+    /**
+     @abstract 顯示 view
+     @discussion 將要顯示的view 初始化與設定相關參數
+     @returns 無
+     */
+    func ShowView()  {
+        let view = testView().initNib() as! testView
+        view.frame = CGRectMake(0, 0, 100, 200);
+        view.test.text = "dwqdqwdqw"
+        self.view.addSubview(view)
+    }
+    
+    /**
+     @abstract 轉換 Json
+     @discussion 將收到的字串轉換成Dictionary
+     @returns String to Dictionary
+     */
     func convertStringToDictionary(text: String) -> [String:AnyObject]? {
         if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
             do {
