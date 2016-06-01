@@ -17,6 +17,7 @@
 		2EA85FC61CFC2DE200600883 /* testView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA85FC51CFC2DE200600883 /* testView.swift */; };
 		2EA85FC81CFC2E1100600883 /* testView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA85FC71CFC2E1100600883 /* testView.xib */; };
 		2EA85FCA1CFC3BFC00600883 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA85FC91CFC3BFC00600883 /* BaseView.swift */; };
+		2EA85FE31CFD869900600883 /* LightWeightPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA85FE21CFD869900600883 /* LightWeightPlist.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		2EA85FC51CFC2DE200600883 /* testView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testView.swift; sourceTree = "<group>"; };
 		2EA85FC71CFC2E1100600883 /* testView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = testView.xib; sourceTree = "<group>"; };
 		2EA85FC91CFC3BFC00600883 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		2EA85FE21CFD869900600883 /* LightWeightPlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightWeightPlist.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 		2E3BA4621CBF9DFC001FBDF8 = {
 			isa = PBXGroup;
 			children = (
+				2EA85FE11CFD867700600883 /* LightWeightPlist */,
 				2E3BA46D1CBF9DFC001FBDF8 /* textSwift */,
 				2E3BA46C1CBF9DFC001FBDF8 /* Products */,
 			);
@@ -111,6 +114,14 @@
 				2EA85FC91CFC3BFC00600883 /* BaseView.swift */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		2EA85FE11CFD867700600883 /* LightWeightPlist */ = {
+			isa = PBXGroup;
+			children = (
+				2EA85FE21CFD869900600883 /* LightWeightPlist.swift */,
+			);
+			name = LightWeightPlist;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +200,7 @@
 				2EA85FC61CFC2DE200600883 /* testView.swift in Sources */,
 				2E96CBED1CF6A53200F8AE6A /* TableViewCell.swift in Sources */,
 				2EA85FCA1CFC3BFC00600883 /* BaseView.swift in Sources */,
+				2EA85FE31CFD869900600883 /* LightWeightPlist.swift in Sources */,
 				2E3BA4711CBF9DFC001FBDF8 /* ViewController.swift in Sources */,
 				2E3BA46F1CBF9DFC001FBDF8 /* AppDelegate.swift in Sources */,
 			);

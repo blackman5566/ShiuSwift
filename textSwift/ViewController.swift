@@ -8,11 +8,11 @@
 
 import UIKit
 
-
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, takoButtonProtocol  {
+    
     @IBOutlet weak var textTableView: UITableView!
     @IBOutlet weak var label: UILabel!
-    
+   // var array  = LightWeightPlist.LWPArray("wdqwd")
     var ListArray: Array = ["Hello world", "Swift", "UITableView", "媽!我在這裡"]
     var red = 0, green = 0, blue: Double = 0.0
     
@@ -40,6 +40,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         ShowJson()
         ShowView()
         ShowClosure()
+      //  LightWeightPlist.LWPArray("wdqwd").addObject("1234556677")
+       // print(LightWeightPlist.LWPArray("wdqwd"))
+//        print(array)
     }
     
     /**
@@ -56,7 +59,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     /**
      @abstract 使用？與！來做條件式處理
-     @discussion 1.用 if 判斷 country 是否有值，如果有值才會往下走 2.使用 ？？來做判斷，比如說 result["address"]?!["city"]! 如果為nil 則會回傳 “我是誰” 字串。
+     @discussion 1.用 if 判斷 country 是否有值，如果有值才會執行 print 2.使用 ？？來做判斷，比如說 result["address"]?!["city"]! 如果為nil 則會回傳 “我是誰” 字串。
      @returns 無
      */
     func ConditionalExpressionDescription(result:AnyObject) {
@@ -150,7 +153,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func labelTextOnTakoButton () -> String{
         return "你好"
     }
+    
 }
 
+private var PERSON_ID_NUMBER_PROPERTY = 0
 
+extension ViewController {
+    var idNumber: String {
+        get{
+            let result = objc_getAssociatedObject(self, &PERSON_ID_NUMBER_PROPERTY) as? String
+            if result == nil {
+                return "12566"
+            }
+            return result!
+        }
+        set{
+            objc_setAssociatedObject(self, &PERSON_ID_NUMBER_PROPERTY, newValue, .OBJC_ASSOCIATION_RETAIN)
+        }
+        
+    }
+}
 
